@@ -1,0 +1,343 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Bowen University</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary: #1e40af;
+      --primary-foreground: #ffffff;
+      --secondary: #7c3aed;
+      --accent: #f59e0b;
+      --background: #ffffff;
+      --foreground: #0f172a;
+      --muted: #f1f5f9;
+      --muted-foreground: #64748b;
+      --border: #e2e8f0;
+      --card: #ffffff;
+    }
+    .bg-primary { background-color: var(--primary); }
+    .text-primary { color: var(--primary); }
+    .text-primary-foreground { color: var(--primary-foreground); }
+    .bg-secondary { background-color: var(--secondary); }
+    .text-secondary { color: var(--secondary); }
+    .bg-accent { background-color: var(--accent); }
+    .text-accent { color: var(--accent); }
+    .bg-background { background-color: var(--background); }
+    .text-foreground { color: var(--foreground); }
+    .bg-muted { background-color: var(--muted); }
+    .text-muted-foreground { color: var(--muted-foreground); }
+    .border-border { border-color: var(--border); }
+    .bg-card { background-color: var(--card); }
+  </style>
+</head>
+<body class="font-sans">
+<!-- ====================== HEADER ====================== -->
+  <header class="fixed top-0 left-0 right-0 bg-background border-b border-border z-50">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+          <div class="w-10 h-10 flex items-center justify-center">
+            <img src="{% static './assets/achievers.png' %}" alt="">
+          </div>
+          <div>
+            <h1 class="text-lg font-bold text-foreground leading-tight">Achievers College of Nursing Sciences</h1>
+            <p class="text-xs text-muted-foreground">Akure, Ondo State, Nigeria.</p>
+          </div>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-6">
+          <a href="/about" class="text-sm font-semibold text-foreground hover:text-primary transition-colors">ABOUT</a>
+          <a href="#academics" class="text-sm font-semibold text-foreground hover:text-primary transition-colors">ACADEMICS</a>
+
+          <!-- Admissions Dropdown (Desktop) -->
+          <div class="relative group">
+            <button class="flex items-center gap-1 text-sm font-semibold text-foreground hover:text-primary transition-colors">
+              ADMISSIONS
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="absolute top-full left-0 mt-1 w-64 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <a href="/admission" class="block px-4 py-3 text-sm hover:bg-muted rounded-md transition-colors">2025/2026 ADMISSION</a>
+              <a href="/tuition" class="block px-4 py-3 text-sm hover:bg-muted rounded-md transition-colors">TUITION FEE</a>
+              <a href="#payment" class="block px-4 py-3 text-sm hover:bg-muted rounded-md transition-colors">PAYMENT</a>
+            </div>
+          </div>
+
+          <a href="#eportal" class="text-sm font-semibold text-foreground hover:text-primary transition-colors">E-PORTAL</a>
+          <a href="#library" class="text-sm font-semibold text-foreground hover:text-primary transition-colors">LIBRARY</a>
+          <a href="https://shark.wghservers.com:2096/webmaillogout.cgi" class="text-sm font-semibold text-foreground hover:text-primary transition-colors">WEBMAIL</a>
+          <button class="text-sm font-semibold px-4 py-2 hover:text-primary transition-colors">MORE</button>
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobileToggle" class="lg:hidden p-2" aria-label="Toggle menu">
+          <svg id="menuIcon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="closeIcon" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div id="mobileMenu" class="lg:hidden pb-4 border-t border-border mt-2">
+        <nav class="flex flex-col gap-2 pt-4">
+          <a href="/about" class="px-4 py-2 text-sm font-semibold hover:bg-muted rounded-md">ABOUT</a>
+          <a href="#academics" class="px-4 py-2 text-sm font-semibold hover:bg-muted rounded-md">ACADEMICS</a>
+
+          <div class="px-4 py-2">
+            <p class="text-sm font-semibold mb-2">ADMISSIONS</p>
+            <div class="ml-4 flex flex-col gap-2">
+              <a href="/admission" class="text-sm py-1 hover:text-primary">2025/2026 ADMISSION</a>
+              <a href="/tution" class="text-sm py-1 hover:text-primary">TUITION FEE</a>
+              <a href="/payment" class="text-sm py-1 hover:text-primary">PAYMENT</a>
+            </div>
+          </div>
+
+          <a href="http://regplatform.aulawjournal.com/" class="px-4 py-2 text-sm font-semibold hover:bg-muted rounded-md">E-PORTAL</a>
+          <a href="#library" class="px-4 py-2 text-sm font-semibold hover:bg-muted rounded-md">LIBRARY</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================== HERO SECTION ====================== -->
+  <section class="relative h-[400px] bg-primary flex items-center justify-center text-center px-4 mt-20">
+    <div class="container mx-auto">
+      <p class="text-[#fff] text-sm font-semibold mb-4 tracking-wider uppercase">ABOUT US</p>
+      <h1 class="text-4xl md:text-6xl font-bold text-primary-foreground mb-4 leading-tight">
+        Achievers College of Nursing Sciences, Akure (ACONSA)
+      </h1>
+      <p class="text-xl text-[#fff] max-w-3xl mx-auto leading-relaxed">
+        A citadel of learning committed to raising competent, compassionate, and ethical nursing professionals equipped with knowledge, integrity, and character.
+      </p>
+    </div>
+  </section>
+
+  <!-- ====================== MISSION SECTION ====================== -->
+  <section class="py-16 bg-background">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <div>
+          <img 
+            src="https://res.cloudinary.com/dpg5xmhf3/image/upload/v1765798862/1_j6y4s5.jpg" 
+            alt="aconsa Academic Excellence" 
+            class="rounded-lg shadow-2xl w-full h-auto object-cover"
+          >
+        </div>
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+            Who We Are
+          </h2>
+          <p class="text-muted-foreground text-lg mb-4 leading-relaxed">
+            Achievers College of Nursing Sciences, Akure (ACONSA) is a reputable institution dedicated to the training and development of professional nurses who meet national and global healthcare standards. The College is committed to academic excellence, clinical competence, and character formation, preparing students to deliver quality, patient-centred care across diverse healthcare settings.
+          </p>
+          <p class="text-muted-foreground text-lg mb-4 leading-relaxed">
+            Rooted in strong ethical and Christian values, ACONSA provides a nurturing learning environment that promotes discipline, professionalism, and service to humanity.
+          <div class="flex items-center gap-4 mt-6">
+            <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center">
+              <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zM12 14l-9-5 9-5 9 5-9 5z" />
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-foreground">Fully Accredited</p>
+              <p class="text-muted-foreground text-sm">Licensed by the National Universities Commission (NUC)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== VICE CHANCELLOR'S MESSAGE ====================== -->
+  <section class="py-16 bg-muted/30">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1">
+          <h2 class="text-3xl font-bold text-foreground mb-6">Our Commitment to Academic Excellence</h2>
+          <p class="text-muted-foreground mb-4 leading-relaxed">
+            At ACONSA, academic excellence is the foundation of our training. Our programmes are carefully designed to combine sound theoretical knowledge with intensive practical and clinical exposure. Through modern teaching methods, skilled faculty members, and well-equipped learning facilities, we ensure our students are fully prepared for professional nursing practice.
+            <br>
+            <br>
+            We emphasize:
+          </p>
+          <p class="text-muted-foreground mb-4 leading-relaxed">
+            * Quality teaching and learning
+          </p>
+          <p class="text-muted-foreground mb-6 leading-relaxed">
+            * Practical clinical competence
+          </p>
+          <p class="text-muted-foreground mb-4 leading-relaxed">
+            * Ethical and compassionate care
+          </p>
+          <p class="text-muted-foreground mb-6 leading-relaxed">
+            * Lifelong learning and leadership development
+          </p>
+          {% comment %} <div class="mt-6">
+            <p class="font-script text-3xl text-primary mb-2">Prof. Jonathan O. Babalola</p>
+            <p class="text-sm text-muted-foreground">Vice Chancellor, Bowen University</p>
+          </div> {% endcomment %}
+        </div>
+        <div class="order-1 md:order-2">
+          <img 
+            src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=2069&auto=format&fit=crop" 
+            alt="Vice Chancellor of Bowen University" 
+            class="rounded-lg shadow-2xl w-full h-auto object-cover"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== OUR JOURNEY ====================== -->
+  <section class="py-16 bg-background">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-foreground">Our Journey of Excellence</h2>
+        <div class="w-24 h-1 bg-accent mx-auto mb-8"></div>
+        
+        <div class="space-y-6 text-muted-foreground">
+          <p class="text-lg leading-relaxed">
+            <span class="text-6xl font-serif float-left mr-4 mt-2 text-primary leading-none">B</span>
+            owen University, Iwo, Osun State, was established in 2001 by the Nigerian Baptist Convention as a testament to their commitment to excellence in education. Since its inception, the University has consistently broken new grounds, reshaping the narrative of what a private faith-based university can and should be.
+          </p>
+          
+          <div class="bg-primary/5 p-6 rounded-lg border-l-4 border-primary">
+            <h3 class="font-bold text-foreground text-xl mb-3">Our Pioneering Spirit</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <div class="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                <span>As one of Nigeria's premier private universities, Bowen has established itself as a pioneer in innovative academic programs that blend theoretical knowledge with practical application.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                <span>The university has introduced cutting-edge programs designed to meet the evolving needs of Nigeria's economy and the global marketplace.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                <span>Bowen demonstrates a strong commitment to moral and spiritual development alongside academic excellence, producing graduates of exceptional character and competence.</span>
+              </li>
+            </ul>
+          </div>
+          <p class="text-lg leading-relaxed">
+            Over the years, Bowen University has grown from strength to strength, expanding its academic offerings, improving its infrastructure, and attracting world-class faculty members. The university's commitment to maintaining small class sizes ensures personalized attention for every student, fostering an environment where learning thrives.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== BAPTIST HERITAGE ====================== -->
+  <section class="py-16 bg-muted/30">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-foreground mb-6">Our Baptist Heritage</h2>
+          <p class="text-muted-foreground mb-4 leading-relaxed">
+            As an institution of the Nigerian Baptist Convention, Bowen University is firmly rooted in Christian values and principles. Our Baptist heritage informs our approach to education, emphasizing character development, service to humanity, and moral leadership.
+          </p>
+          <p class="text-muted-foreground mb-4 leading-relaxed">
+            The university's beautiful chapel stands as a symbol of our commitment to spiritual growth, providing a space for worship, reflection, and community building. Weekly chapel services bring together students, faculty, and staff in a shared expression of faith and fellowship.
+          </p>
+          <p class="text-muted-foreground leading-relaxed">
+            While we maintain our Christian identity, we welcome students from all backgrounds, creating a diverse and inclusive community where mutual respect and understanding flourish.
+          </p>
+        </div>
+        <div>
+          <img 
+            src="https://images.unsplash.com/photo-1588075592446-4f1e9096f7de?q=80&w=2070&auto=format&fit=crop" 
+            alt="Bowen University Chapel" 
+            class="rounded-lg shadow-2xl w-full h-auto object-cover"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== CORE VALUES ====================== -->
+  <section class="py-16 bg-background">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-foreground">Our Core Values</h2>
+      <div class="w-24 h-1 bg-accent mx-auto mb-12"></div>
+      <p class="text-center text-muted-foreground max-w-3xl mx-auto mb-12 text-lg">
+        Our core values of integrity, excellence, and service drive us to create a transformative educational experience
+      </p>
+      
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <!-- Integrity -->
+        <div class="bg-card rounded-lg border border-border p-8 text-center hover:shadow-2xl transition-shadow duration-300">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-foreground mb-3">Integrity</h3>
+          <p class="text-muted-foreground">
+            We uphold the highest standards of honesty, transparency, and ethical conduct in all our endeavors, fostering trust throughout our community.
+          </p>
+        </div>
+
+        <!-- Excellence -->
+        <div class="bg-card rounded-lg border border-border p-8 text-center hover:shadow-2xl transition-shadow duration-300">
+          <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="h-8 w-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0114 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-foreground mb-3">Excellence</h3>
+          <p class="text-muted-foreground">
+            We strive for excellence in teaching, research, and service, continuously improving our programs to meet global standards.
+          </p>
+        </div>
+
+        <!-- Service -->
+        <div class="bg-card rounded-lg border border-border p-8 text-center hover:shadow-2xl transition-shadow duration-300">
+          <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="h-8 w-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-foreground mb-3">Service</h3>
+          <p class="text-muted-foreground">
+            We are committed to serving humanity through education, research, and community engagement, making positive impacts on society.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== KEY STATISTICS ====================== -->
+  <section class="py-16 bg-primary text-primary-foreground">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-4xl md:text-5xl font-bold mb-2">20+</div>
+          <div class="text-primary-foreground/80 text-lg">Years of Excellence</div>
+        </div>
+        <div>
+          <div class="text-4xl md:text-5xl font-bold mb-2">10,000+</div>
+          <div class="text-primary-foreground/80 text-lg">Alumni Worldwide</div>
+        </div>
+        <div>
+          <div class="text-4xl md:text-5xl font-bold mb-2">50+</div>
+          <div class="text-primary-foreground/80 text-lg">Academic Programs</div>
+        </div>
+        <div>
+          <div class="text-4xl md:text-5xl font-bold mb-2">95%</div>
+          <div class="text-primary-foreground/80 text-lg">Graduate Employment</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
