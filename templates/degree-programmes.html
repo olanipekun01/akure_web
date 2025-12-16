@@ -1,0 +1,486 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Degree Programmes | Achievers Nursing College Akure</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary: #1e40af;
+      --primary-foreground: #ffffff;
+      --secondary: #7c3aed;
+      --destructive: #ef4444;
+      --background: #ffffff;
+      --foreground: #0f172a;
+      --muted: #f1f5f9;
+      --muted-foreground: #64748b;
+      --border: #e2e8f0;
+      --card: #ffffff;
+    }
+    .bg-primary { background-color: var(--primary); }
+    .text-primary { color: var(--primary); }
+    .text-primary-foreground { color: var(--primary-foreground); }
+    .bg-secondary { background-color: var(--secondary); }
+    .text-secondary { color: var(--secondary); }
+    .bg-destructive { background-color: var(--destructive); }
+    .text-destructive { color: var(--destructive); }
+    .bg-background { background-color: var(--background); }
+    .text-foreground { color: var(--foreground); }
+    .bg-muted { background-color: var(--muted); }
+    .text-muted-foreground { color: var(--muted-foreground); }
+    .border-border { border-color: var(--border); }
+    .bg-card { background-color: var(--card); }
+
+    #mobileMenu {
+      transition: max-height 0.3s ease-in-out, opacity 0.2s ease;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+    #mobileMenu.open {
+      max-height: 600px;
+      opacity: 1;
+    }
+
+    .hover\:scale-105:hover { transform: scale(1.05); }
+    .transition-transform { transition: transform 0.3s ease; }
+  </style>
+</head>
+<body class="font-sans">
+  <header class="fixed top-0 left-0 right-0 bg-background border-b border-border z-50">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+
+        <!-- Logo -->
+        <a href='/' class="flex items-center gap-2">
+          <div class="w-10 h-10 flex items-center justify-center">
+            <img src="{% static './assets/achievers.png' %}" alt="">
+          </div>
+          <div>
+            <h1 class="text-lg font-bold text-foreground leading-tight">Achievers College of Nursing Sciences</h1>
+            <p class="text-xs text-muted-foreground">Akure, Ondo State, Nigeria.</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-6">
+          <a href="/about" class="text-sm font-semibold text-foreground hover:text-primary transition-colors">ABOUT</a>
+
+          <div class="relative group">
+            <button class="flex items-center gap-1 text-sm font-semibold text-foreground hover:text-primary transition-colors">
+              ACADEMICS
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="absolute top-full left-0 mt-1 w-64 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <a href="/academic-calendar" class="block px-4 py-3 text-sm hover:bg-muted rounded-md transition-colors">CALENDAR</a>
+              <a href="/degree-programmes" class="block px-4 py-3 text-sm hover:bg-muted rounded-md transition-colors">DEGREE PROGRAMMES</a>
+            </div>
+          </div>
+
+          <!-- Admissions Dropdown (Desktop) -->
+          <div class="relative group">
+            <button class="flex items-center gap-1 text-sm font-semibold text-foreground hover:text-primary transition-colors">
+              ADMISSIONS
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="absolute top-full left-0 mt-1 w-64 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <a href="/admission" class="block px-4 py-3 text-sm hover:bg-muted rounded-md transition-colors">2025/2026 ADMISSION</a>
+              <a href="/tuition" class="block px-4 py-3 text-sm hover:bg-muted rounded-md transition-colors">TUITION FEE</a>
+              <a href="#payment" class="block px-4 py-3 text-sm hover:bg-muted rounded-md transition-colors">PAYMENT</a>
+            </div>
+          </div>
+
+          <a href="http://regplatform.aulawjournal.com/" class="text-sm font-semibold text-foreground hover:text-primary transition-colors">E-PORTAL</a>
+          <a href="#library" class="text-sm font-semibold text-foreground hover:text-primary transition-colors">LIBRARY</a>
+          <a href="https://shark.wghservers.com:2096/webmaillogout.cgi" class="text-sm font-semibold text-foreground hover:text-primary transition-colors">WEBMAIL</a>
+          <button class="text-sm font-semibold px-4 py-2 hover:text-primary transition-colors">MORE</button>
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobileToggle" class="lg:hidden p-2" aria-label="Toggle menu">
+          <svg id="menuIcon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="closeIcon" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div id="mobileMenu" class="lg:hidden pb-4 border-t border-border mt-2">
+        <nav class="flex flex-col gap-2 pt-4">
+          <a href="/about" class="px-4 py-2 text-sm font-semibold hover:bg-muted rounded-md">ABOUT</a>
+          <a href="#academics" class="px-4 py-2 text-sm font-semibold hover:bg-muted rounded-md">ACADEMICS</a>
+
+          <div class="px-4 py-2">
+            <p class="text-sm font-semibold mb-2">ACADEMICS</p>
+            <div class="ml-4 flex flex-col gap-2">
+              <a href="/admission" class="text-sm py-1 hover:text-primary">2025/2026 ADMISSION</a>
+              <a href="/tution" class="text-sm py-1 hover:text-primary">TUITION FEE</a>
+              <a href="/payment" class="text-sm py-1 hover:text-primary">PAYMENT</a>
+            </div>
+          </div>
+
+          <div class="px-4 py-2">
+            <p class="text-sm font-semibold mb-2">ADMISSIONS</p>
+            <div class="ml-4 flex flex-col gap-2">
+              <a href="/admission" class="text-sm py-1 hover:text-primary">2025/2026 ADMISSION</a>
+              <a href="/tution" class="text-sm py-1 hover:text-primary">TUITION FEE</a>
+              <a href="/payment" class="text-sm py-1 hover:text-primary">PAYMENT</a>
+            </div>
+          </div>
+
+          <a href="http://regplatform.aulawjournal.com/" class="px-4 py-2 text-sm font-semibold hover:bg-muted rounded-md">E-PORTAL</a>
+          <a href="#library" class="px-4 py-2 text-sm font-semibold hover:bg-muted rounded-md">LIBRARY</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================== HERO SECTION ====================== -->
+  <section class="relative h-[600px] overflow-hidden">
+    <div class="absolute inset-0">
+      <img 
+        src="{% static './assets/2.jpg' %}" 
+        alt="School of Computing" 
+        class="w-full h-full object-cover"
+      >
+      {% comment %} <div class="absolute inset-0 opacity-60 bg-gradient-to-r from-primary/90 to-primary/70"></div> {% endcomment %}
+      <div class="absolute inset-0 opacity-60 bg-[#000]"></div>
+    </div>
+    <div class="relative container mx-auto px-4 h-full flex items-center">
+      <div class="max-w-3xl text-primary-foreground">
+        <p class="text-sm font-semibold tracking-wider mb-4 uppercase">Achievers College of Nursing, Akure</p>
+        <h1 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">COLLEGE OF NURSING SCIENCES</h1>
+        <p class="text-xl opacity-90 leading-relaxed">
+          Achievers College of Nursing Sciences, Akure (ACONSA) provides high-quality nursing education designed to prepare students for professional practice in diverse healthcare settings. Our programmes emphasize academic excellence, clinical competence, ethical conduct, and compassionate patient care.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== WELCOME SECTION ====================== -->
+  <section class="py-20 bg-background">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-4xl lg:text-5xl font-bold mb-8 text-foreground">
+            Welcome to the College of Nursing Sciences
+          </h2>
+        </div>
+        <div class="space-y-6 text-lg leading-relaxed text-muted-foreground">
+          <p>
+            Welcome to Achievers College of Nursing Sciences, Akure — a place where knowledge, skill, and character are developed for impactful nursing practice.
+          </p>
+          <p>
+            We are committed to delivering accessible, high-quality nursing education that equips students with the theoretical knowledge, practical skills, and professional values required to excel in today’s healthcare system. Our programmes are structured to ensure a strong foundation in nursing science alongside extensive clinical exposure.
+          </p>
+          <p>
+            Our faculty consists of highly qualified and experienced nurse educators and healthcare professionals who provide rigorous, engaging, and student-centered learning experiences. Through structured coursework, clinical postings, and mentorship, students are guided to achieve academic success and professional competence.
+          </p>
+          <p>
+            At ACONSA, we believe nursing is central to effective healthcare delivery and community well-being. As such, we focus on hands-on training, ethical practice, and lifelong learning. Students also benefit from clinical affiliations, supervised practical experiences, and professional development activities that prepare them for real-world healthcare challenges.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== ALL PROGRAMMES ====================== -->
+  <section class="py-20 bg-muted/30">
+    <div class="container mx-auto px-4">
+      <div class="mb-12">
+        <h2 class="text-4xl lg:text-5xl font-bold mb-6 text-foreground">Our Nursing Programmes</h2>
+        <p class="text-lg text-muted-foreground max-w-3xl">
+          Achievers College of Nursing Sciences, Akure is committed to providing professional nursing education that meets national standards and prepares graduates for licensure and practice.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <!-- Programme 1 -->
+        <div class="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="{% static './assets/generalnursing.jpg' %}" alt="BSc. Computer Science" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-6 space-y-4">
+            <h3 class="text-xl font-bold text-foreground">General Nursing</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">
+              Begin your journey into professional nursing with a comprehensive programme that combines classroom instruction, laboratory practice, and supervised clinical experience to prepare you for licensure and effective patient care.
+            </p>
+            <a href="/general-nursing" class="block">
+              <button class="w-full bg-red-600 text-white py-3 rounded-md hover:bg-red-700 transition flex items-center justify-center gap-2">
+                View Programme
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </a>
+          </div>
+        </div>
+
+        <!-- Programme 2 -->
+        {% comment %} <div class="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" alt="BSc. Cybersecurity" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-6 space-y-4">
+            <h3 class="text-xl font-bold text-foreground">BSc. Cybersecurity</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">
+              Start your cyber security career as you discover how performing digital forensics and incident response is vital for any business.
+            </p>
+            <a href="#" class="block">
+              <button class="w-full bg-red-600 text-white py-3 rounded-md hover:bg-red-700 transition flex items-center justify-center gap-2">
+                View Programme
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </a>
+          </div>
+        </div> {% endcomment %}
+
+        <!-- Programme 3 -->
+        {% comment %} <div class="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="BSc. Data Science" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-6 space-y-4">
+            <h3 class="text-xl font-bold text-foreground">BSc. Data Science</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">
+              Dive into the world of Data Science, unravel hidden insights, and drive meaningful decisions through advanced analytics and machine learning.
+            </p>
+            <a href="#" class="block">
+              <button class="w-full bg-red-600 text-white py-3 rounded-md hover:bg-red-700 transition flex items-center justify-center gap-2">
+                View Programme
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </a>
+          </div>
+        </div> {% endcomment %}
+
+        <!-- Programme 4 -->
+        {% comment %} <div class="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?q=80&w=2070&auto=format&fit=crop" alt="BSc. Software Engineering" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-6 space-y-4">
+            <h3 class="text-xl font-bold text-foreground">BSc. Software Engineering</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">
+              Embark on a journey of Software Engineering, crafting innovative solutions, building robust applications, and shaping the future of technology.
+            </p>
+            <a href="#" class="block">
+              <button class="w-full bg-red-600 text-white py-3 rounded-md hover:bg-red-700 transition flex items-center justify-center gap-2">
+                View Programme
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </a>
+          </div>
+        </div> {% endcomment %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== PROFESSORS ====================== -->
+  <section class="py-20 bg-background">
+    <div class="container mx-auto px-4">
+      <div class="mb-12">
+        <p class="text-red-600 text-sm font-bold mb-2 tracking-wider uppercase">Our Department</p>
+        <h2 class="text-4xl lg:text-5xl font-bold text-primary">
+          Experienced & Dedicated Nurse Educators
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="group overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+          <div class="aspect-square overflow-hidden">
+            <img src="{% static './assets/placeholder.png' %}" alt="Prof. Michael Adeyemi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          </div>
+        </div>
+        <div class="group overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+          <div class="aspect-square overflow-hidden">
+            <img src="{% static './assets/placeholder.png' %}" alt="Prof. Emmanuel Okonkwo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          </div>
+        </div>
+        <div class="group overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+          <div class="aspect-square overflow-hidden">
+            <img src="{% static './assets/placeholder.png' %}" alt="Prof. David Olumide" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== LECTURERS ====================== -->
+  <section class="py-20 bg-muted/30">
+    <div class="container mx-auto px-4">
+      <div class="mb-12">
+        <p class="text-red-600 text-sm font-bold mb-2 tracking-wider uppercase">Lecturers</p>
+        <h2 class="text-4xl lg:text-5xl font-bold text-primary">
+          Meet the Faculty
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="group overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow bg-card">
+          <div class="aspect-square overflow-hidden">
+            <img src="{% static './assets/placeholder.png' %}" alt="Dr. Emeka Ogbuju" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="bg-primary p-6 flex items-center justify-between">
+            <h3 class="text-lg font-bold text-primary-foreground">________</h3>
+            <div class="flex gap-3">
+              <a href="#" class="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Repeat for other lecturers -->
+        <div class="group overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow bg-card">
+          <div class="aspect-square overflow-hidden">
+            <img src="{% static './assets/placeholder.png' %}" alt="Samuel Ubaru" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="bg-primary p-6 flex items-center justify-between">
+            <h3 class="text-lg font-bold text-primary-foreground">_________</h3>
+            <div class="flex gap-3">
+              <a href="#" class="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+              <a href="#" class="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="group overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow bg-card">
+          <div class="aspect-square overflow-hidden">
+            <img src="{% static './assets/placeholder.png' %}" alt="Obinna Awoke" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="bg-primary p-6 flex items-center justify-between">
+            <h3 class="text-lg font-bold text-primary-foreground">__________</h3>
+            <div class="flex gap-3">
+              <a href="#" class="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+              <a href="#" class="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== FOOTER ====================== -->
+  <footer class="bg-primary text-primary-foreground py-16">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <!-- Column 1 -->
+        <div>
+          <h3 class="font-bold text-xl mb-4">ACONSA</h3>
+          <p class="text-sm opacity-80 leading-relaxed">
+            Km2, Owo Ado ROad, Ijapo Housing Estate,<br>
+            Opposite College of Agriculture, Akure<br>
+            07038264197<br>
+            07068214377<br>
+            collegesecretary@achieversnursingcollegeakure.edu.ng
+          </p>
+        </div>
+
+        {% comment %} <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <!-- Column 1 -->
+        <div>
+          <h3 class="font-bold text-xl mb-4">Contact</h3>
+          <p class="text-sm opacity-80 leading-relaxed">
+            07038264197<br>
+            07068214377<br>
+            collegesecretary@achievers<br>
+            nursingcollegeakure.edu.ng
+          </p>
+        </div> {% endcomment %}
+
+
+        <!-- Column 2 -->
+        <div>
+          <h4 class="font-bold mb-5">Quick Links</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="/" class="hover:text-secondary transition-colors">Home</a></li>
+            <li><a href="/about" class="hover:text-secondary transition-colors">About Us</a></li>
+            <li><a href="/academics" class="hover:text-secondary transition-colors">Academics</a></li>
+            <li><a href="/admission" class="hover:text-secondary transition-colors">Admissions</a></li>
+            <li><a href="#library" class="hover:text-secondary transition-colors">Library</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div>
+          <h4 class="font-bold mb-5">Resources</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="https://regplatform.aulawjournal.com" class="hover:text-secondary transition-colors">E-Portal</a></li>
+            <li><a href="/contact" class="hover:text-secondary transition-colors">Contact</a></li>
+            <li><a href="#news" class="hover:text-secondary transition-colors">News & Events</a></li>
+            <li><a href="#alumni" class="hover:text-secondary transition-colors">Alumni</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4 -->
+        <div>
+          <h4 class="font-bold mb-5">Connect With Us</h4>
+          <div class="flex gap-5 text-2xl">
+            <a href="https://www.facebook.com/p/Achievers-College-of-Nursing-Sciences-Akure-61554679330241/" class="hover:text-secondary transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" class="hover:text-secondary transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21-.004-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+            </a>
+            <a href="#" class="hover:text-secondary transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 3.24 7.392 7.496 0 4.476-2.826 8.091-6.743 8.091-1.321 0-2.56-.67-2.986-1.46 0 0-.659 2.512-.82 3.128-.153.583-.569 1.313-1.022 1.756 1.286.396 2.638.612 4.067.612 6.62 0 11.987-5.367 11.987-11.987C23.996 5.367 18.629.029 12.017.029z"/></svg>
+            </a>
+            <a href="#" class="hover:text-secondary transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href="#" class="hover:text-secondary transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-primary-foreground/20 pt-8 text-center text-sm opacity-80">
+        <p>© 2025 Achievers University College of Nursing, Akure,. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIcon = document.getElementById('menuIcon');
+    const closeIcon = document.getElementById('closeIcon');
+
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      menuIcon.classList.toggle('hidden', isOpen);
+      closeIcon.classList.toggle('hidden', !isOpen);
+    });
+  </script>
+
+</body>
+</html>
+
+

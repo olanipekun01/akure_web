@@ -22,6 +22,12 @@ app_name = "app"
 urlpatterns = [
     path('', views.Index, name="index"),
     path('about/', views.About, name='about'),
+    path('academic-calendar/', views.AcademicCalendar, name='academic-calendar'),
+    path('degree-programmes/', views.DegreeProgrammes, name='degree-programmes'),
+    path('tuition/', views.Tuition, name='tuition'),
+    path('admission/', views.Admission, name='admission'),
+    path('general-nursing/', views.GeneralNursing, name='general-nursing'),
+    
     # path('accounts/signup/', views.Signup, name="signup"),
     # path('accounts/logout/', views.logout, name="logout"),
 ]

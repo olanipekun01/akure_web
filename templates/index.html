@@ -84,7 +84,7 @@
       <div class="flex items-center justify-between h-20">
 
         <!-- Logo -->
-        <div class="flex items-center gap-2">
+        <a href='/' class="flex items-center gap-2">
           <div class="w-10 h-10 flex items-center justify-center">
             <img src="{% static './assets/achievers.png' %}" alt="">
           </div>
@@ -92,12 +92,22 @@
             <h1 class="text-lg font-bold text-foreground leading-tight">Achievers College of Nursing Sciences</h1>
             <p class="text-xs text-muted-foreground">Akure, Ondo State, Nigeria.</p>
           </div>
-        </div>
+        </a>
 
         <!-- Desktop Navigation -->
         <nav class="hidden lg:flex items-center gap-6">
           <a href="/about" class="text-sm font-semibold text-foreground hover:text-primary transition-colors">ABOUT</a>
-          <a href="#academics" class="text-sm font-semibold text-foreground hover:text-primary transition-colors">ACADEMICS</a>
+
+          <div class="relative group">
+            <button class="flex items-center gap-1 text-sm font-semibold text-foreground hover:text-primary transition-colors">
+              ACADEMICS
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="absolute top-full left-0 mt-1 w-64 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <a href="/academic-calendar" class="block px-4 py-3 text-sm hover:bg-muted rounded-md transition-colors">CALENDAR</a>
+              <a href="/degree-programmes" class="block px-4 py-3 text-sm hover:bg-muted rounded-md transition-colors">DEGREE PROGRAMMES</a>
+            </div>
+          </div>
 
           <!-- Admissions Dropdown (Desktop) -->
           <div class="relative group">
@@ -112,7 +122,7 @@
             </div>
           </div>
 
-          <a href="#eportal" class="text-sm font-semibold text-foreground hover:text-primary transition-colors">E-PORTAL</a>
+          <a href="http://regplatform.aulawjournal.com/" class="text-sm font-semibold text-foreground hover:text-primary transition-colors">E-PORTAL</a>
           <a href="#library" class="text-sm font-semibold text-foreground hover:text-primary transition-colors">LIBRARY</a>
           <a href="https://shark.wghservers.com:2096/webmaillogout.cgi" class="text-sm font-semibold text-foreground hover:text-primary transition-colors">WEBMAIL</a>
           <button class="text-sm font-semibold px-4 py-2 hover:text-primary transition-colors">MORE</button>
@@ -136,6 +146,15 @@
           <a href="#academics" class="px-4 py-2 text-sm font-semibold hover:bg-muted rounded-md">ACADEMICS</a>
 
           <div class="px-4 py-2">
+            <p class="text-sm font-semibold mb-2">ACADEMICS</p>
+            <div class="ml-4 flex flex-col gap-2">
+              <a href="/admission" class="text-sm py-1 hover:text-primary">2025/2026 ADMISSION</a>
+              <a href="/tution" class="text-sm py-1 hover:text-primary">TUITION FEE</a>
+              <a href="/payment" class="text-sm py-1 hover:text-primary">PAYMENT</a>
+            </div>
+          </div>
+
+          <div class="px-4 py-2">
             <p class="text-sm font-semibold mb-2">ADMISSIONS</p>
             <div class="ml-4 flex flex-col gap-2">
               <a href="/admission" class="text-sm py-1 hover:text-primary">2025/2026 ADMISSION</a>
@@ -154,8 +173,8 @@
   <!-- ====================== HERO SECTION ====================== -->
   <section class="relative h-[600px] lg:h-[700px] mt-20">
     <!-- Background Image + Overlay -->
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dpg5xmhf3/image/upload/v1765798863/6_jiql93.jpg');">
-      <div class="absolute inset-0 bg-primary/70"></div>
+    <div class="absolute inset-0  bg-cover bg-center" style="background-image: url('{% static './assets/7.jpg' %}');">
+      <div class="absolute inset-0 bg-[#000] opacity-50"></div>
     </div>
 
     <!-- Announcement Marquee -->
@@ -176,18 +195,21 @@
     <!-- Hero Content -->
     <div class="relative h-full flex items-center justify-center">
       <div class="container mx-auto px-4 text-center">
-        {% comment %} <h2 class="text-white text-xl lg:text-2xl font-medium mb-4 tracking-wide">
-          Welcome to
-        </h2> {% endcomment %}
+         <h2 class="text-white text-xl lg:text-2xl font-medium mb-4 tracking-wide">
+          Home
+        </h2>
         <h1 class="text-primary-foreground text-4xl lg:text-7xl font-bold mb-6 leading-tight">
-          Achievers College of Nursing Sciences, Akure –  
+          Achievers College of Nursing Sciences, Akure (ACONSA) 
         </h1>
-        <h1 class="text-primary-foreground text-5xl lg:text-8xl font-bold tracking-wide">
+         <h1 class="text-primary-foreground text-5xl lg:text-8xl font-bold tracking-wide">
           Building the Future of Healthcare through
         </h1>
-        <h1 class="text-primary-foreground text-5xl lg:text-8xl font-bold tracking-wide mb-8">
+        <p class="text-xl text-[#fff] max-w-3xl mx-auto leading-relaxed">
+        A citadel of learning committed to raising competent, compassionate, and ethical nursing professionals equipped with knowledge, integrity, and character.
+      </p>
+        {% comment %} <h1 class="text-primary-foreground text-5xl lg:text-8xl font-bold tracking-wide mb-8">
           Excellence in Nursing Education.
-        </h1>
+        </h1> {% endcomment %}
       </div>
     </div>
   </section>
@@ -240,7 +262,7 @@
         </div>
         <div class="bg-muted h-64 lg:h-80 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300">
           <p class="text-muted-foreground text-sm">
-            <img src='https://res.cloudinary.com/dpg5xmhf3/image/upload/v1765798863/7_etcsc2.jpg' />
+            <img src="{% static './assets/6.jpg' %}" />
           </p>
           
         </div>
@@ -301,7 +323,7 @@
             1
           </div>
           <p class="text-xs font-bold leading-tight text-foreground">Peter Felumi IKUBANNI, Ph.D.</p>
-          <p class="text-xs text-muted-foreground">Mechatronics</p>
+          <p class="text-xs text-muted-foreground">Nursing</p>
         </div>
         <!-- Scientist 2 -->
         <div class="text-center">
@@ -317,7 +339,7 @@
             3
           </div>
           <p class="text-xs font-bold leading-tight text-foreground">Sulyman Olakunle SALAWU, Ph.D.</p>
-          <p class="text-xs text-muted-foreground">Mathematics</p>
+          <p class="text-xs text-muted-foreground">Nursing</p>
         </div>
         <!-- Scientist 4 -->
         <div class="text-center">
@@ -325,7 +347,7 @@
             4
           </div>
           <p class="text-xs font-bold leading-tight text-foreground">Samuel Olatunde DAHUNSI, Ph.D.</p>
-          <p class="text-xs text-muted-foreground">Microbiology</p>
+          <p class="text-xs text-muted-foreground">Public Health</p>
         </div>
         <!-- Scientist 5 -->
         <div class="text-center">
@@ -333,7 +355,7 @@
             5
           </div>
           <p class="text-xs font-bold leading-tight text-foreground">Aruha Olasekan ADEKIYA, Ph.D.</p>
-          <p class="text-xs text-muted-foreground">Agricultural Science</p>
+          <p class="text-xs text-muted-foreground">Mathematics</p>
         </div>
         <!-- Scientist 6 -->
         <div class="text-center">
@@ -361,7 +383,7 @@
       <div class="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
         <div>
           <img 
-            src="https://res.cloudinary.com/dpg5xmhf3/image/upload/v1750695133/about1_kysh54.jpg" 
+            src="{% static './assets/2.jpg' %}" 
             alt="ACONSA Students" 
             class="rounded-lg shadow-2xl w-full h-auto object-cover"
           >
@@ -491,6 +513,7 @@
         <div>
           <h4 class="font-bold mb-5">Quick Links</h4>
           <ul class="space-y-3 text-sm">
+            <li><a href="/" class="hover:text-secondary transition-colors">Home</a></li>
             <li><a href="/about" class="hover:text-secondary transition-colors">About Us</a></li>
             <li><a href="/academics" class="hover:text-secondary transition-colors">Academics</a></li>
             <li><a href="/admission" class="hover:text-secondary transition-colors">Admissions</a></li>
